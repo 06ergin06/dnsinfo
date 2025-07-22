@@ -63,3 +63,11 @@ if [[ -z "$cname" ]]; then
 else 
     echo -e "${green}${cname}${reset}"
 fi
+
+echo -e "${white}SOA${reset}"
+soa=$(dig $website SOA +short)
+if [[ -z "$soa" ]]; then
+    echo -e "${red}Record is empty${reset}"
+else 
+    echo -e "${green}${soa}${reset}"
+fi
