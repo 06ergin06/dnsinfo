@@ -8,6 +8,12 @@ echo "Welcome to dnsinfo app"
 
 website=$1
 
+if [[ -z "$1" ]]; then
+    echo -e "${red}You must enter a parameter as a website.${reset}"
+    exit 1
+fi
+
+
 echo "-----$website-----"
 
 echo -e "${white}Nameserver${reset}"
