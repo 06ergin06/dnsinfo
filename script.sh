@@ -1,4 +1,8 @@
 #!/bin/bash
+red="\e[31m"
+green="\e[32m"
+white="\e[1;37m"	
+reset="\e[0m"
 
 echo "Welcome to dnsinfo app"
 
@@ -6,26 +10,50 @@ website=$1
 
 echo "-----$website-----"
 
-echo "Nameserver"
+echo -e "${white}Nameserver${reset}"
 nameserver=$(dig $website NS +short)
-echo $nameserver
+if [[ -z "$nameserver" ]]; then
+    echo -e "${red}Record is empty${reset}"
+else 
+    echo -e "${green}${nameserver}${reset}"
+fi
 
-echo "IPv4"
+echo -e "${white}IPv4${reset}"
 a=$(dig $website A +short)
-echo $a
+if [[ -z "$a" ]]; then
+    echo -e "${red}Record is empty${reset}"
+else 
+    echo -e "${green}${a}${reset}"
+fi
 
-echo "IPv6"
+echo -e "${white}IPv6${reset}"
 aaaa=$(dig $website AAAA +short)
-echo $aaaa
+if [[ -z "$aaaa" ]]; then
+    echo -e "${red}Record is empty${reset}"
+else 
+    echo -e "${green}${aaaa}${reset}"
+fi
 
-echo "MX"
+echo -e "${white}MX${reset}"
 mx=$(dig $website MX +short)
-echo $mx
+if [[ -z "$mx" ]]; then
+    echo -e "${red}Record is empty${reset}"
+else 
+    echo -e "${green}${mx}${reset}"
+fi
 
-echo "TXT"
+echo -e "${white}TXT${reset}"
 txt=$(dig $website TXT +short)
-echo $txt
+if [[ -z "$txt" ]]; then
+    echo -e "${red}Record is empty${reset}"
+else 
+    echo -e "${green}${txt}${reset}"
+fi
 
-echo "CNAME"
+echo -e "${white}CNAME${reset}"
 cname=$(dig $website CNAME +short)
-echo $cname
+if [[ -z "$cname" ]]; then
+    echo -e "${red}Record is empty${reset}"
+else 
+    echo -e "${green}${cname}${reset}"
+fi
