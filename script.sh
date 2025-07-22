@@ -18,3 +18,14 @@ echo "IPv6"
 aaaa=$(dig kosakymm.com AAAA +short)
 echo $aaaa
 
+echo "MX"
+mx=$(dig kosakymm.com MX +short)
+echo $mx
+
+echo "TXT"
+txt=$(dig kosakymm.com TXT +short)
+echo $txt
+
+echo "CNAME"
+cname=$(dig www.blogger.com CNAME +short)
+echo $cname
