@@ -7,10 +7,14 @@ website=$1
 echo "-----$website-----"
 
 echo "Nameserver"
-nameserver=$(nslookup -query=NS $website | grep nameserver | awk '{print $4}')
+nameserver=$(dig kosakymm.com NS +short)
 echo $nameserver
 
-echo "A"
-a=$(nslookup -query=A kosakymm.com | grep Address |grep -v "#" | awk '{print $2}')
+echo "IPv4"
+a=$(dig kosakymm.com A +short)
 echo $a
+
+echo "IPv6"
+aaaa=$(dig kosakymm.com AAAA +short)
+echo $aaaa
 
